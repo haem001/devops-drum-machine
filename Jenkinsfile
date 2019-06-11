@@ -15,15 +15,13 @@ pipeline {
       }
     }
     stage('Deploy') {
-      parallel {
-        stage('Deploy') {
-        }
+      
         stage('Archive Artifacts') {
           steps {
             archiveArtifacts '**/public/assets/**'
           }
         }
-      }
+      
     }
     stage('Integration testing') {
       steps {
