@@ -26,5 +26,3 @@ pipeline {
         sh 'sudo curl localhost'
       }
     }
-  
-}
