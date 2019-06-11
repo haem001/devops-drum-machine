@@ -5,13 +5,13 @@ pipeline {
       agent any
       steps {
         sh 'sudo npm install'
-        sh 'sudo npm run build'
+  
       }
     }
-    stage('Unit Testing') {
+    stage('Build') {
       agent any
       steps {
-        sh 'sudo npm test'
+        sh 'sudo npm run build'
       }
     }
         stage('Archive Artifacts') {
@@ -20,7 +20,7 @@ pipeline {
           }
         }
 
-    stage('Integration testing') {
+    stage('Deploy') {
       steps {
         sleep 10
         sh 'sudo curl http://labbnc13vm3.canadacentral.cloudapp.azure.com:8008'
