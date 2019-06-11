@@ -18,7 +18,7 @@ pipeline {
       parallel {
         stage('Deploy') {
           steps {
-            sh 'sudo docker run -d --name student1 -p 8008:80 -p 2222:22 iliyan/docker-nginx-sshd'
+            sh 'sudo docker run -d --name student1 -p 8081:80 -p 2222:22 iliyan/docker-nginx-sshd'
           }
         }
         stage('Archive Artifacts') {
@@ -31,7 +31,7 @@ pipeline {
     stage('Integration testing') {
       steps {
         sleep 10
-        sh 'sudo curl localhost:8008'
+        sh 'sudo curl localhost:8081'
       }
     }
   }
