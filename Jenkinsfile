@@ -1,21 +1,21 @@
-pipeline {
+Pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Compile') {
       agent any
       steps {
-        sh 'npm install'
-        sh 'npm run build'
+        sh 'sudo npm install'
+        sh 'sudo npm run build'
       }
     }
     stage('Unit Testing') {
       agent any
       steps {
-        sh 'npm test'
+        sh 'sudo npm test'
       }
     }
     stage('Deploy') {
-      //parallel {
+      parallel {
         stage('Deploy') {
           steps {
             sh 'sudo docker run -d --name student1 -p 8008:80 -p 2222:22 iliyan/docker-nginx-sshd'
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Archive Artifacts') {
           steps {
-            archiveArtifacts '**/public/'
+            archiveArtifacts '**/public/assets/**'
           }
         }
       }
