@@ -23,7 +23,7 @@ pipeline {
     stage('Integration testing') {
       steps {
         sleep 10
-        sh 'sudo curl localhost'
+        sh 'sudo curl http://labbnc13vm3.canadacentral.cloudapp.azure.com:8008'
       }
     }
 }
